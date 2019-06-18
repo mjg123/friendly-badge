@@ -29,7 +29,8 @@
                                  (assoc c :score (:score s)))
                                comments (:documents sentiments))
 
-        summary {:sentiment {:summary-by-project-role
+        summary {:repo-url (format "https://github.com/%s/%s" owner repo)
+                 :sentiment {:summary-by-project-role
                              (into {}
                                    (map (fn [[association scores]]
                                           (vector (keyword association) (avg (map :score scores))))
