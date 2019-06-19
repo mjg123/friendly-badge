@@ -2,7 +2,7 @@
 
 ![FriendlyBadge scores itself](https://friendly-badge.herokuapp.com/mjg123/friendly-badge/badge.svg)
 
-Code for creating a badge (like the one above) that you can put on your repo, indicating how positive your community is. It works by performing sentiment analysis of the comments on the repo.
+FriendlyBadge creates a badge (like the one above) that you can put on your repo, indicating how positive your community is. It works by performing sentiment analysis of the comments on the repo.
 
 You provide the name of a GitHub repo and this fetches the last 120 comments, performs sentiment analysis on them 
 and gives back a summary, eg for https://github.com/npm/cli you can see the result at https://friendly-badge.herokuapp.com/npm/cli/badge.json:
@@ -27,6 +27,8 @@ and gives back a summary, eg for https://github.com/npm/cli you can see the resu
     }
 }
 ```
+
+This is directly inspired by [Bogdan Vasilescu's talk "Sustaining Open Source Digital Infrastructure" from ScalaDays](https://portal.klewel.com/watch/webcast/scala-days-2019/talk/33/).
 
 ## What is returned?
 
@@ -57,6 +59,10 @@ Then browse to http://localhost:3000/{USER}/{REPO}/badge.json
   - Remove code blogs before analysis
   - Better text analysis. "Sentiment" is a poor proxy for what we are tyring to measure, which is more like "friendliness" or "politeness"
   
-## License
+## References / Further Reading
 
-Copyright © 2019 FIXME
+  - Sustaining Open Source Digital Infrastructure: https://portal.klewel.com/watch/webcast/scala-days-2019/talk/33/
+  - Adios to Unfriendly Badges: https://stackoverflow.blog/2019/06/18/adios-to-unfriendly-badges-ahoy-lifejacket-and-lifeboat/
+  - Detecting Politeness in Text: https://cran.r-project.org/web/packages/politeness/vignettes/politeness.html
+  - A computational approach to politeness: https://nlp.stanford.edu/pubs/politeness.pdf
+  - An emotion-polarity classifier specifically trained on developers' communication channels: https://github.com/collab-uniba/Senti4SD
