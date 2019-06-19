@@ -50,7 +50,9 @@ Then browse to http://localhost:3000/{USER}/{REPO}/badge.json
 ## Todo
 
   - Actually generating a badge, not just JSON
+  - Chokes on repos without any comment activity
   - Ability to remove certain users from the results (ie bots)
+  - Remove code blogs before analysis
   - Better text analysis. "Sentiment" is a poor proxy for what we are tyring to measure, which is more like "friendliness" or "politeness"
   
 ## License
