@@ -2,7 +2,7 @@
 
 ![FriendlyBadge scores itself](https://friendly-badge.herokuapp.com/mjg123/friendly-badge/badge.svg)
 
-Code for creating a badge that you can put on your Readme on GitHub which indicates how friendly your community is.
+Code for creating a badge (like the one above) that you can put on your repo, indicating how positive your community is. It works by performing sentiment analysis of the comments on the repo.
 
 You provide the name of a GitHub repo and this fetches the last 120 comments, performs sentiment analysis on them 
 and gives back a summary, eg for https://github.com/npm/cli you can see the result at https://friendly-badge.herokuapp.com/npm/cli/badge.json:
@@ -34,7 +34,7 @@ In that block of JSON there is `avg_sentiment_by_project_role`, which uses GitHu
 
 If you want to see the actual comments, and how they are scored, add `?debug=true` to the end of the URL.
 
-If you want to see just the badge, replace `json` with `svg` at the end of the URL: https://friendly-badge.herokuapp.com/npm/cli/badge.svg
+If you want to see just the badge, replace `json` with `svg` at the end of the URL: https://friendly-badge.herokuapp.com/npm/cli/badge.svg (you can add the badge to your repo with this URL).
 
 ## Running
 
