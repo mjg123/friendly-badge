@@ -13,7 +13,7 @@
        (assoc {} :documents)
        (json/write-str)))
 
-(defn sentiments [strs & {:keys [debug?]}]
+(defn sentiments [strs]
   (->
    (client/post url {:body (create-post-body strs)
                      :content-type :json

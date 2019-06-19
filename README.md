@@ -3,43 +3,43 @@
 Code for creating a badge that you can put on your Readme on GitHub which indicates how friendly your community is.
 
 You provide the name of a GitHub repo and this fetches the last 120 comments, performs sentiment analysis on them 
-and gives back a summary, eg for https://github.com/npm/cli :
+and gives back a summary, eg for https://github.com/npm/cli you can see the result at https://friendly-badge.herokuapp.com/npm/cli/badge.json:
 
 ```
 {
+    "repo_url": "https://github.com/npm/cli",
+    "repo_badge_url": "https://img.shields.io/static/v1.svg?label=FriendlyBadge&message=0.54&color=green",
+    "badge_docs_url": "https://github.com/mjg123/friendly-badge#friendly-badge-api",
     "sentiment": {
-        "summary_by_project_role": {
-            "CONTRIBUTOR": 0.5763469114899635,
-            "NONE": 0.45486778728663924,
+        "avg_sentiment_by_project_role": {
+            "NONE": 0.4615027400446527,
+            "CONTRIBUTOR": 0.5628444494739655,
             "MEMBER": 0.54096370190382
         },
-        "extremes": [
-            {
-                "score": 5.431771278381348E-4,
-                "body": "Still having this issue on `npm@6.9.1-next.0` :( ",
-                "html_url": "https://github.com/npm/cli/pull/40#issuecomment-497448861"
-            },
-            {
-                "score": 0.9999912977218628,
-                "body": "@nikoladev Thanks!  That is awesome :D",
-                "html_url": "https://github.com/npm/cli/pull/173#issuecomment-486876511"
-            }
-        ]
+        "weighted_avg_sentiment": 0.5358637780868377
     },
     "comment_summary": {
         "count": 120,
-        "newest": "2019-06-14T20:40:47Z",
-        "oldest": "2019-02-06T12:01:18Z"
+        "newest": "2019-06-18T13:02:14Z",
+        "oldest": "2019-02-07T00:46:10Z"
     }
 }
 ```
+
+## What is returned?
+
+In that block of JSON there is `avg_sentiment_by_project_role`, which uses GitHub's concept of [Author Association](https://developer.github.com/v4/enum/commentauthorassociation/) to group users by their role on the project, and provides an average sentiment for comments from each type of person. It is expected that Collaborators, Members and Owners carry more responsibility in setting the norms for a community, so their contribution is weighted higher int the `weighted_avg_sentiment` value. This value is then used to construct the `repo_badge_url`.
+
+If you want to see the actual comments, and how they are scored, add `?debug=true` to the end of the URL.
+
+If you want to see just the badge, replace `json` with `svg` at the end of the URL: https://friendly-badge.herokuapp.com/npm/cli/badge.svg
 
 ## Running
 
 You need the following as environment variables:
 
   - `AZURE_KEY` - for the Azure Text API: https://docs.microsoft.com/en-gb/azure/cognitive-services/text-analytics/overview
-  - `GH_CLIENT_ID` and `GH_CLIENT_SECRET` - To get a reasonable rate-limit from GitHub: https://developer.github.com/v3/#oauth2-keysecret
+  - `GH_CLIENT_ID` and `GH_CLIENT_SECRET` - for GitHub: https://developer.github.com/v3/#oauth2-keysecret
 
 To start a web server for the application, run:
 

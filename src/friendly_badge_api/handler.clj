@@ -12,6 +12,10 @@
                               :key-fn (fn [s] (-> s name
                                                   (clojure.string/replace "-" "_"))))})
 
+  (GET "/:user/:repo/badge.svg" [user repo]
+       (let [details (core/get-sentiment-summary user repo)]
+         {:headers {"Location" (:repo-badge-url details)}
+          :status 302}))
 
   (route/not-found "Not Found"))
 
