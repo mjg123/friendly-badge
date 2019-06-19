@@ -1,5 +1,7 @@
 # friendly-badge-api
 
+![FriendlyBadge scores itself](https://friendly-badge.herokuapp.com/mjg123/friendly-badge/badge.svg)
+
 Code for creating a badge that you can put on your Readme on GitHub which indicates how friendly your community is.
 
 You provide the name of a GitHub repo and this fetches the last 120 comments, performs sentiment analysis on them 
